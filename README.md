@@ -88,14 +88,16 @@ All three clients were launched simultaneously in separate terminals.
 
 Results:
 
-![Client 1 - no lock](screenshots/Screenshot-2026-03-01-at-22.36.56-2.png)
 Client 1: Final value — 18,502, Time: 6.00s
 
-![Client 2 - no lock](screenshots/Screenshot-2026-03-01-at-22.36.48.png)
+![Client 1 - no lock](screenshots/Screenshot%202026-03-01%20at%2022.36.56.png)
+
 Client 2: Final value — 10,597, Time: 5.74s
 
-![Client 3 - no lock](screenshots/Screenshot-2026-03-01-at-22.37.04-3.png)
+![Client 2 - no lock](screenshots/Screenshot%202026-03-01%20at%2022.36.48.png)
+
 Client 3: Final value — 15,272, Time: 6.27s
+![Client 3 - no lock](screenshots/Screenshot%202026-03-01%20at%2022.37.04.png)
 
 #### Observation: 
 The final value was significantly less than 30,000 due to race conditions. Multiple clients read the same value simultaneously, incremented it, and wrote it back — overwriting each other's updates. This is a classic lost update problem in a concurrent environment without synchronization.
