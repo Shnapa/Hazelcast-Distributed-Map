@@ -1,0 +1,30 @@
+version: '3'
+services:
+  hz1:
+    image: hazelcast/hazelcast:5.3
+    ports:
+      - "5701:5701"
+    environment:
+      - HZ_CLUSTERNAME=dev
+
+  hz2:
+    image: hazelcast/hazelcast:5.3
+    ports:
+      - "5702:5701"
+    environment:
+      - HZ_CLUSTERNAME=dev
+
+  hz3:
+    image: hazelcast/hazelcast:5.3
+    ports:
+      - "5703:5701"
+    environment:
+      - HZ_CLUSTERNAME=dev
+
+  management-center:
+    image: hazelcast/management-center:5.3
+    ports:
+      - "8080:8080"
+    environment:
+      - MC_DEFAULT_CLUSTER=dev
+      - MC_DEFAULT_CLUSTER_MEMBERS=hz1:5701,hz2:5701,hz3:5701
