@@ -79,3 +79,23 @@ This resulted in partial data loss — TOTAL dropped to **658** out of 1,001 ent
 **Observation:** When two nodes fail simultaneously, the cluster cannot replicate data fast enough, leading to significant data loss. This is a known limitation of the default Hazelcast configuration with `backup-count=1` — only one backup copy exists per partition, so losing two nodes at once destroys both the primary and its backup.
 
 ![After simultaneous stop of 2 nodes](screenshots/Screenshot-2026-03-01-at-22.17.50.jpg)
+
+## Part 4 — Distributed Map Without Locks
+Three clients simultaneously incremented the same key "key" in a loop of 10,000 iterations each. 
+Expected final value: 30,000.
+
+All three clients were launched simultaneously in separate terminals.
+
+Results:
+
+![Client 1 - no lock](screenshots/Screenshot-2026-03-01-at-22.36.56-2.jpg)
+Client 1: Final value — 18,502, Time: 6.00s
+
+![Client 2 - no lock](screenshots/Screenshot-2026-03-01-at-22.36.48.jpg)
+Client 2: Final value — 10,597, Time: 5.74s
+
+![Client 3 - no lock](screenshots/Screenshot-2026-03-01-at-22.37.04-3.jpg)
+Client 3: Final value — 15,272, Time: 6.27s
+
+#### Observation: 
+The final value was significantly less than 30,000 due to race conditions. Multiple clients read the same value simultaneously, incremented it, and wrote it back — overwriting each other's updates. This is a classic lost update problem in a concurrent environment without synchronization.
