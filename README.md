@@ -109,16 +109,17 @@ Expected final value: 30,000.
 All three clients were launched simultaneously in separate terminals.
 
 Results:
-![Client 1 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.40.jpg)
 
 Client 1: Final value — 30,000, Time: 56.47s
 
+![Client 1 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.40.png)
+
 Client 2: Final value — 29,479, Time: 57.27s
 
-![Client 2 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.46-2.jpg)
+![Client 2 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.46.png)
 
 Client 3: Final value — 28,392, Time: 56.82s
-![Client 3 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.52-3.jpg)
+![Client 3 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.52.png)
 
 #### Observation:
 
