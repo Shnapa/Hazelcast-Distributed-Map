@@ -101,3 +101,25 @@ Client 3: Final value — 15,272, Time: 6.27s
 
 #### Observation: 
 The final value was significantly less than 30,000 due to race conditions. Multiple clients read the same value simultaneously, incremented it, and wrote it back — overwriting each other's updates. This is a classic lost update problem in a concurrent environment without synchronization.
+
+## Part 5 — Distributed Map With Pessimistic Locking
+Three clients simultaneously incremented the same key "key" in a loop of 10,000 iterations each using pessimistic locking (map.lock() / map.unlock()).
+Expected final value: 30,000.
+
+All three clients were launched simultaneously in separate terminals.
+
+Results:
+![Client 1 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.40.jpg)
+
+Client 1: Final value — 30,000, Time: 56.47s
+
+Client 2: Final value — 29,479, Time: 57.27s
+
+![Client 2 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.46-2.jpg)
+
+Client 3: Final value — 28,392, Time: 56.82s
+![Client 3 - pessimistic lock](screenshots/Screenshot%202026-03-01%20at%2023.12.52-3.jpg)
+
+#### Observation:
+
+The final value shown by Client 1 was exactly 30,000, confirming that pessimistic locking successfully prevented lost updates. Clients 2 and 3 show intermediate values because they read the map state before all other clients finished their remaining iterations — the key's value was still being incremented at the time those clients disconnected. The total execution time was ~56–57 seconds per client, significantly slower than the no-lock approach (~6s), due to lock contention — at any point, only one client can hold the lock while the other two wait.
