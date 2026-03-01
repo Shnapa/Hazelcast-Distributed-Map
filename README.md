@@ -20,7 +20,7 @@ Management Center is available at: http://localhost:8080
 
 Three Hazelcast nodes were configured as Docker containers united in a single cluster named `dev`. All nodes automatically discover each other within the Docker network and form a cluster, which can be verified in Management Center where all 3 members are visible.
 
-![Management Center - 3 nodes](screenshots/management-center-cluster.png)
+![Management Center - 3 nodes](screenshots/management-center-members.png)
 
 
 ## Part 3 — Fault Tolerance Experiments
