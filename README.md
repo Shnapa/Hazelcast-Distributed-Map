@@ -88,13 +88,13 @@ All three clients were launched simultaneously in separate terminals.
 
 Results:
 
-![Client 1 - no lock](screenshots/Screenshot-2026-03-01-at-22.36.56-2.jpg)
+![Client 1 - no lock](screenshots/Screenshot-2026-03-01-at-22.36.56-2.png)
 Client 1: Final value — 18,502, Time: 6.00s
 
-![Client 2 - no lock](screenshots/Screenshot-2026-03-01-at-22.36.48.jpg)
+![Client 2 - no lock](screenshots/Screenshot-2026-03-01-at-22.36.48.png)
 Client 2: Final value — 10,597, Time: 5.74s
 
-![Client 3 - no lock](screenshots/Screenshot-2026-03-01-at-22.37.04-3.jpg)
+![Client 3 - no lock](screenshots/Screenshot-2026-03-01-at-22.37.04-3.png)
 Client 3: Final value — 15,272, Time: 6.27s
 
 #### Observation: 
