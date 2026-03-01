@@ -1,0 +1,9 @@
+hazelcast:
+  cluster-name: dev
+  map:
+    default:
+      backup-count: 0
+      async-backup-count: 0
+    lock-map:
+      backup-count: 0
+      async-backup-count: 0
